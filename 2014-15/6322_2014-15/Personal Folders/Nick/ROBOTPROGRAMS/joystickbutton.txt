@@ -1,0 +1,6 @@
+d pad up = 12
+d pad dwn = 14
+x = 3
+square = 4
+triangle = 1
+circle = 2

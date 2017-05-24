@@ -1,0 +1,19 @@
+Lesson Plan:
+
+----------------------------------------------------
+- scratch and basic
+- Navigating through RobotC 
+- Explain #pragma and how to modify them
+- Go over joystickdriver.c file and explain #includes
+- Task main() and while(true)
+- If and else statements and else if 
+- Go over motor functions
+- Go over int and floats
+- Explain motor and servo values
+- Basic IR  
+- += and -=
+- /*Comment Here*/ or //Like this
+- Motor and Servo Controllers
+- NXT Ports
+- Functions and #define voids 
+- Task and switch cases

@@ -1,0 +1,15 @@
+What is being used.
+
+Controller 1:
+Joystick 1 y axis: Wheels
+joystick 2 y axis: Wheels
+Button 1: A button: Wrist Angle
+Button 3: Y button: Wrist Angle
+Button 4: Front Left Trigger: Arm Lift
+Button 5: Front Right Trigger: Arm Lift
+
+Controller 2:
+Button 4: Front Left Trigger: Pull Up
+Button 5: Front Right Trigger: Pull Up
+Button 6: Back Left Trigger: Flag Lift
+Button 7: Back Right Trigger: Flag Lift

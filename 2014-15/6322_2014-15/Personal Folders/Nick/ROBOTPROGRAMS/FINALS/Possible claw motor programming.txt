@@ -1,0 +1,45 @@
+d pad up = 12
+d pad dwn = 14
+x = 3
+square = 4
+triangle = 1
+circle = 2
+
+
+int claw_speed
+btn = 0
+if ( joy2Btn (4) == 1 && joy2Btn (3) == 0 )
+{
+claw_speed = 1;
+}
+else if (joy2Btn (3) == 1 && joy2Btn (4) == 0)
+{
+claw_speed = -1
+}
+if ( btn = 1 )
+{
+motor[claw] = 100;
+}
+----------------------------------------------------------------------
+ void value_changefoward()
+{
+if ( claw_speed = 0)
+{
+claw_speed = 1;
+}
+else
+{
+claw_speed = 0;
+}
+
+void value_changebackward()
+{
+if ( claw_speed = 0 )
+{
+claw_speed = -1;
+}
+else
+{
+claw_speed = 0
+}
+}

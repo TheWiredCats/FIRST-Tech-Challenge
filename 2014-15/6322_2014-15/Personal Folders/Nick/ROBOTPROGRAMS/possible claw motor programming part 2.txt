@@ -1,0 +1,25 @@
+void value_changefoward()
+{
+if ( a = 1)
+{
+a = 0;
+}
+else if ( a = 0)
+{
+a = 1;
+}
+}
+
+
+
+void value_changebackward()
+{
+if (a = -1)
+{
+a = 0;
+}
+else if ( a = 0 )
+{
+a = -1;
+}
+}

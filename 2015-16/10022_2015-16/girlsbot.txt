@@ -1,0 +1,97 @@
+package com.qualcomm.ftcrobotcontroller.opmodes;
+
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+
+/**
+ * Created by jbg68_000 on 10/16/2015.
+ */
+public class girlsbot extends OpMode{
+
+    DcMotor left1;//front
+    DcMotor left2;//back
+    DcMotor right1;
+    DcMotor right2;
+    DcMotor leftlift;
+    DcMotor rightlift;
+    DcMotor midlift;
+    Servo claw;
+    //Servo spiny;
+
+    final double claw_rest = 0.5;
+    //final double TIPPY_RIGHT = 0.0;
+    //final double TIPPY_MID = 1.0;
+    @Override
+    public void init()
+    {
+        left1 = hardwareMap.dcMotor.get("left1");
+        left2 = hardwareMap.dcMotor.get("left2");
+        right1 = hardwareMap.dcMotor.get("right1");
+        right2 = hardwareMap.dcMotor.get("right2");
+
+
+        left1.setDirection(DcMotor.Direction.REVERSE);
+        left2.setDirection(DcMotor.Direction.REVERSE);
+
+        leftlift = hardwareMap.dcMotor.get("leftlift");
+        rightlift = hardwareMap.dcMotor.get("rightlift");
+        midlift = hardwareMap.dcMotor.get("midlift");
+        claw = hardwareMap.servo.get("claw");
+        leftlift.setDirection(DcMotor.Direction.REVERSE);
+
+
+
+        //tippy = hardwareMap.servo.get("tippy");
+        //spiny = hardwareMap.servo.get("spiny");
+
+    }
+
+    @Override
+    public void loop()
+    {
+        float leftY = -gamepad1.left_stick_y;
+        float rightY = -gamepad1.right_stick_y;
+
+        left1.setPower(leftY);
+        left2.setPower(leftY);
+        right1.setPower(rightY);
+        right2.setPower(rightY);
+
+        if (gamepad2.right_bumper)
+            rightlift.setPower(1.0);
+        else if (gamepad2.right_trigger == 1)
+            rightlift.setPower(-1.0);
+        else if (gamepad2.left_bumper)
+            leftlift.setPower(1.0);
+        else if (gamepad2.left_trigger == 1)
+            leftlift.setPower(-1.0);
+        else {
+            rightlift.setPower(0.0);
+            leftlift.setPower(0.0);
+        }
+
+        midlift.setPower(gamepad2.right_stick_y);
+        
+        float claw_pos = gamepad2.left_stick_y;
+        claw.setPosition(claw_pos);
+
+        /*float leftylift= -gamepad2.left_stick_y;
+        float rightylift = -gamepad2.left_stick_y;
+        leftlift.setPower(leftylift);
+        rightlift.setPower(rightylift);
+        midlift.setPower(midlifty);*/
+
+        /*if (gamepad2.x)
+            tippy.setPosition(TIPPY_LEFT);
+        else if (gamepad2.y)
+            tippy.setPosition(TIPPY_MID);
+        else if (gamepad2.b)
+            tippy.setPosition(TIPPY_RIGHT);
+
+        if (gamepad2.right_bumper)
+            spiny.setDirection(Servo.Direction.FORWARD);
+        else if(gamepad2.left_bumper)
+            spiny.setPosition(1);*/
+    }
+}

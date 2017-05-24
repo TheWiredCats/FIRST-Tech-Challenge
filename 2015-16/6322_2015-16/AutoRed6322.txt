@@ -1,0 +1,67 @@
+package com.qualcomm.ftcrobotcontroller.opmodes;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+public class AutoRed6322 extends LinearOpMode
+{
+    DcMotor FR, BR, FL, BL;
+
+    @Override
+    public void runOpMode() throws InterruptedException
+    {
+        BL = hardwareMap.dcMotor.get("BL");//MC2 MOTOR 2 [DIR.LEFT]
+        BR = hardwareMap.dcMotor.get("BR");//MC1 MOTOR 1 [DIR.RIGHT]
+        FL = hardwareMap.dcMotor.get("FL");//MC2 MOTOR 1 [DIR.LEFT]
+        FR = hardwareMap.dcMotor.get("FR");//MC1 MOTOR 2 [DIR.RIGHT]
+
+        FR.setDirection(DcMotor.Direction.REVERSE);
+        BR.setDirection(DcMotor.Direction.REVERSE);
+
+        waitForStart();
+
+        move(0.5, 1200);
+        move(0.0, 500);
+        move("left", 1250);
+        move(0.0, 500);
+        move(0.5, 2350);
+
+    }
+
+    public void move(String rotate, int time) throws InterruptedException
+    {
+        if (rotate.equals("left"))
+        {
+            BL.setPower(0);
+            FL.setPower(0);
+            BR.setPower(1.0);
+            FR.setPower(1.0);
+            sleep(time);
+        }
+        if (rotate.equals("right"))
+        {
+            BL.setPower(1.0);
+            FL.setPower(1.0);
+            BR.setPower(0);
+            FR.setPower(0);
+            sleep(time);
+        }
+        BL.setPowerFloat();
+        FL.setPowerFloat();
+        BR.setPowerFloat();
+        FR.setPowerFloat();
+    }
+    public void move(double power, int time) throws InterruptedException
+    {
+        BL.setPower(power);
+        FL.setPower(power);
+        BR.setPower(power);
+        FR.setPower(power);
+        sleep(time);
+
+        BL.setPowerFloat();
+        FL.setPowerFloat();
+        BR.setPowerFloat();
+        FR.setPowerFloat();
+    }
+}

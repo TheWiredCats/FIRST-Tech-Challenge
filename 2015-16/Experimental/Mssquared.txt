@@ -1,0 +1,45 @@
+package com.qualcomm.ftcrobotcontroller.opmodes;
+
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+public class Mssquared extends OpMode
+{
+    DcMotor left1;
+    DcMotor left2;
+    DcMotor right1;
+    DcMotor right2;
+
+    @Override
+    public void init()
+    {
+        left1 = hardwareMap.dcMotor.get("left1");
+        left2 = hardwareMap.dcMotor.get("left2");
+
+        right1 = hardwareMap.dcMotor.get("right1");
+        right2 = hardwareMap.dcMotor.get("right2");
+
+        left1.setDirection(DcMotor.Direction.REVERSE);
+        left2.setDirection(DcMotor.Direction.REVERSE);
+
+        /*float leftY = -gamepad1.left_stick_y;
+        float rightY = -gamepad1.right_stick_y;
+
+        left1.setPower(leftY);
+        left2.setPower(leftY);
+        right1.setPower(rightY);
+        right2.setPower(rightY);*/
+    }
+
+    @Override
+    public void loop()
+    {
+        float leftY = -gamepad1.left_stick_y;
+        float rightY = -gamepad1.right_stick_y;
+
+        left1.setPower(leftY);
+        left2.setPower(leftY);
+        right1.setPower(rightY);
+        right2.setPower(rightY);
+    }
+}

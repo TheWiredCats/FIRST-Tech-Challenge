@@ -1,0 +1,49 @@
+package com.qualcomm.ftcrobotcontroller.opmodes;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+public class SP extends LinearOpMode
+{
+    private DcMotor left;
+    private DcMotor right;
+
+    @Override
+    public void runOpMode() throws InterruptedException
+    {
+    }
+    SP()
+    {
+        left = hardwareMap.dcMotor.get("left_drive");
+        right = hardwareMap.dcMotor.get("right_drive");
+
+        left.setDirection(DcMotor.Direction.REVERSE);
+    }
+
+    public void move(String rotate, int time) throws InterruptedException
+    {
+        if (rotate.equals("left"))
+        {
+            left.setPower(0);
+            right.setPower(1.0);
+            sleep(time);
+        }
+        if (rotate.equals("right"))
+        {
+            left.setPower(1.0);
+            right.setPower(0);
+            sleep(time);
+        }
+        left.setPowerFloat();
+        right.setPowerFloat();
+    }
+    public void move(double power, int time) throws InterruptedException
+    {
+        left.setPower(power);
+        right.setPower(power);
+        sleep(time);
+
+        left.setPowerFloat();
+        right.setPowerFloat();
+    }
+
+}

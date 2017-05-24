@@ -1,0 +1,18 @@
+package com.qualcomm.ftcrobotcontroller.opmodes;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+/**
+ * Created by Arman on 10/14/2015.
+ */
+public class vprimeautotest extends LinearOpMode
+{
+    public void runOpMode() throws InterruptedException
+    {
+        waitForStart();
+        SP robot = new SP();
+        robot.move(1.0,2000);
+        robot.move("left", 2000);
+        robot.move(1.0, 2000);
+    }
+}

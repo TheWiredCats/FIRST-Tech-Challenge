@@ -1,0 +1,88 @@
+package com.qualcomm.ftcrobotcontroller.opmodes;
+
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+/**
+ * Created by STUDENT on 12/6/2015.
+ */
+public class IndianRidge extends OpMode {
+
+    DcMotor left;
+    DcMotor right;
+  //  DcMotor leftarm;
+  //  DcMotor rightarm;
+    DcMotor belt;
+
+  //  Servo leftzip;
+    //Servo rightzip;
+
+  //  final double rightzipstand = 0.0;
+   // final double rightziphit = 0.5;
+ //   final double leftzipstand = 1.0;
+   // final double leftziphit = 0.5;
+
+    @Override
+    public void init() {
+        left = hardwareMap.dcMotor.get("left");
+        right = hardwareMap.dcMotor.get("right");
+     //   leftarm = hardwareMap.dcMotor.get("leftarm");
+     //   rightarm = hardwareMap.dcMotor.get("rightarm");
+        belt = hardwareMap.dcMotor.get("belt");
+
+      //  leftzip = hardwareMap.servo.get("leftzip");
+      //  rightzip = hardwareMap.servo.get("rightzip");
+
+        left.setDirection(DcMotor.Direction.REVERSE);
+      //  leftarm.setDirection(DcMotor.Direction.REVERSE);
+        belt.setDirection(DcMotor.Direction.REVERSE);
+    }
+
+    @Override
+    public void loop() {
+        // These are the wheels
+        float leftY = gamepad1.left_stick_y;
+        float rightY = gamepad1.right_stick_y;
+      //  float larm = gamepad2.left_stick_y;
+      //  float rarm = gamepad2.right_stick_y;
+
+        left.setPower(leftY);
+        right.setPower(rightY);
+       // leftarm.setPower(larm);
+      //  rightarm.setPower(rarm);
+
+        if (gamepad1.a == true && gamepad1.b == false && gamepad1.x == false) {
+
+            belt.setPower(1.0);
+        } else if (gamepad1.a == false && gamepad1.b == false && gamepad1.x == true) {
+
+            belt.setPower(-1.0);
+
+        } else if (gamepad1.a == false && gamepad1.b == true && gamepad1.x == false) {
+
+            belt.setPower(0.0);
+        }
+
+      /*  if(gamepad2.left_bumper==true){
+
+            leftzip.setPosition(leftziphit);
+
+        }
+        else if(gamepad2.left_bumper==false){
+
+            leftzip.setPosition(leftzipstand);
+
+        }
+
+        if (gamepad2.right_bumper==true){
+
+            rightzip.setPosition(rightziphit);
+
+        }
+        else if (gamepad2.right_bumper==false){
+
+            rightzip.setPosition(rightzipstand);
+
+        }*/
+    }
+}

@@ -1,0 +1,73 @@
+package com.qualcomm.ftcrobotcontroller.opmodes;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+
+/**
+ * Created by David and Juan on 10/15/2015.
+ */
+
+
+public class TeleOp9110Oct17th extends OpMode{
+    DcMotor left;
+    DcMotor right;
+    DcMotor belt;
+
+    final double BUCKET_LEFT_POSITION = 0.42;
+    final double BUCKET_RIGHT_POSITION = 0.82;
+    final double BUCKET_STAND_POSITION = 0.62;
+    Servo bucket;
+
+    @Override
+    public void init() {
+        left = hardwareMap.dcMotor.get("left");
+        right = hardwareMap.dcMotor.get("right");
+
+        belt = hardwareMap.dcMotor.get("belt_drive");
+        bucket = hardwareMap.servo.get("bucket");
+
+        left.setDirection(DcMotor.Direction.REVERSE);
+        belt.setDirection(DcMotor.Direction.REVERSE);
+
+
+    }
+
+    @Override
+    public void loop() {
+        // These are the wheels //
+        float leftY = -gamepad1.left_stick_y;
+        float rightY = -gamepad1.right_stick_y;
+
+
+        left.setPower(leftY);
+        right.setPower(rightY);
+
+        // This is the Belt //
+
+        //Bucket Movement
+        if(gamepad2.left_bumper==true && gamepad2.right_bumper==false){
+            bucket.setPosition(BUCKET_LEFT_POSITION);
+        }
+        else if(gamepad2.right_bumper==true && gamepad2.left_bumper==false){
+            bucket.setPosition(BUCKET_RIGHT_POSITION);
+        }
+        else if(gamepad2.left_bumper==false && gamepad2.right_bumper== false){
+            bucket.setPosition(BUCKET_STAND_POSITION);
+        }
+
+        int a = 0;
+
+        if (gamepad1.a==true) {
+            a=1;
+        }
+        if(a==1 ){
+            belt.setPower(1.0);
+        }
+        else if(a==1 && gamepad1.a==true){
+            a=0;
+        }
+        if(a==0){
+            belt.setPower(0.0);
+        }
+    }
+}

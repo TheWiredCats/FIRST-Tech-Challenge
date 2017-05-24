@@ -1,0 +1,24 @@
+What parts of the controller is being used.
+
+
+Controller 1:
+
+7th button: back right trigger
+
+
+1st joystick, y axis
+2st joystick, y axis
+
+
+
+Controller 2:
+
+1st joystick, y axis
+2nd joystick, y axis
+
+
+Button 0: x button
+button 1: A button
+Button 2: B button
+Button 3: Y button
+Button 12: 
